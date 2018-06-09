@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Crystal Game</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <div id="header">
+        <header><h1>Welcome to the Crystal Game</h1></header>
+    </div>
+
+    <div id="instructions">
+        <p>You will be given a random number at the start of the game.
+        <br>
+        <br>
+        There are four crystals below. By clicking on a crytal you will add 
+        a specific amount of points to your total score.
+        <br>
+        <br>
+        You win the game by matching your total score to random number,
+        you lose the game if your total score goes above the random number.
+        <br>
+        <br>
+        The value of each crystal is hidden from you until you click on it.
+        <br>
+        <br>
+        Each time when you game starts, the game will change the values of each crystal.
+    </p>
+    </div>
+
+
+    <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+
+    <p>Your score: <span id="your-score"></span></p>
+    <p>wins: <span id="wins"></span></p>
+    <p>losses: <span id="losses"></span></p>
+
+
+    <div id="crystals">
+        <img width="100" data-range="1,3" src="images/amethyst.jpg">
+        <img width="100" data-range="4,6" src="images/Andradite-Stilbite.jpg">
+        <img width="100" data-range="7,8" src="images/black.jpg">
+        <img width="100" data-range="9,10" src="images/titanium-quart.jpg">
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    
+    <script type="text/javascript">
+
+        function getRandomArbitrary(min, max) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
+
+        var guessNumber = getRandomArbitrary(30, 60);
+        $("#number-to-guess").text(guessNumber);
+    
+        var counter = 0;
+        var winCount = 0;
+        var lossesCount = 0;
+        var yourScore = 0;
+
+        yourScore += counter;
+
+        $("#crystals img").each(function(i, img) {
+            img.dataset.value = getRandomArbitrary.apply(null, img.dataset.range.split(',').map(function(str) {
+                return Number(str);
+            }));
+        });
+        $("#crystals img").on("click", function() {
+            counter += Number(this.dataset.value);
+            $("#your-score").text(counter);
+  
+    
+        if (yourScore === counter) {
+            console.log(history);
+        winCount++;
+        }
+
+        else if(yourScore > counter) {
+
+            lossesCount--;
+            yourScore++;
+            if (yourScore > counter) {
+            yourScore = 0;
+            lossesCount++;
+            
+        }
+    }
+        var html =
+        "<p>Your score: " + counter + "</p>" +
+        "<p>wins: " + winCount + "</p>" +
+        "<p>losses: " + lossesCount + "</p>";
+
+        var results = document.querySelector("#results");
+        //results.innerHTML = html;
+        });
+
+
+
+        //if (counter === guessNumber) {
+       //     text(You win!)
+      //  }
+
+    //var increment = numberOptions[Math.round(Math.random() * numberOptions)];
+
+
+        //var cry1{
+            //path: "",
+           // points:gen(1,2)
+        //}
+
+
+        //need?
+    //$("#crystals").on("click", ".crystal-image", function() {
+     //alert("You clicked a crystal!");
+    //});
+
+        //need?
+    //$("#crystals").on("click", ".crystal-image", function() {
+    //counter += 1;
+    //alert("You clicked this crystal " + counter + " times!");
+    
+        //need?
+    //counter += 10;
+    //alert("Your new score is: " + counter);
+
+        //need?
+    //counter += increment;
+    //});
+
+        
+        //crystals.on("click", function() {
+
+    //var crystalValue = ($(this).attr("data-crystalvalue"));
+    //crystalValue = parseInt(crystalValue);
+
+   // counter += crystalValue;
+
+    //alert("New score: " + counter);
+
+
+   // if (counter === targetNumber) {
+   // alert("You win!");
+//}
+    //else if (counter >= targetNumber) {
+    //alert("You lose!!");
+
+   // }
+    
+
+
+
+    //});
+
+    
+    </script>
+
+    <script> scr="game.js"</script>
+
+      
+
+</body>
+
+</html>
